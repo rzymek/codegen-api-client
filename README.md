@@ -10,12 +10,12 @@ Assumtions:
 
 ## Install
 
-```
+```bash
 yarn install @rzymek/codegen-api-client
 ```
 
 ## Setup
-```
+```typescript
 import { Configuration } from "api-client/src";
 import * as apis from "api-client/src/apis";
 import { configureApiClient } from "@rzymek/codegen-api-client";
@@ -38,6 +38,6 @@ const api = configureApiClient(apis, Configuration, {
 
 ## Usage
 
-```
+```typescript
 const result = api.SampleResourceApi.list()
 ```
