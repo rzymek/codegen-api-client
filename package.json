@@ -1,0 +1,20 @@
+{
+  "name": "codegen-api-client",
+  "version": "1.0.0",
+  "description": "Opinionated uniform configuration for openapi generated fetch-typescript client",
+  "main": "lib/index.js",
+  "files": [
+    "lib/*"
+  ],
+  "repository": "https://github.com/rzymek/codegen-api-client.git",
+  "author": "Krzysztof Rzymkowski ttps://github.com/rzymek",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "prepare" : "npm run build",
+    "postversion" : "git push --tags"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.3"
+  }
+}
