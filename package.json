@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Opinionated uniform configuration for openapi generated fetch-typescript client",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/*"
   ],
