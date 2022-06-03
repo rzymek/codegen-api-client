@@ -11,7 +11,7 @@ Assumtions:
 ## Install
 
 ```bash
-yarn install @rzymek/codegen-api-client
+yarn add @rzymek/codegen-api-client
 ```
 
 ## Setup
