@@ -8,6 +8,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
       - run: yarn install
       - uses: JS-DevTools/npm-publish@v1
         with:
