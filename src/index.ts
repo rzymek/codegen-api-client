@@ -36,7 +36,7 @@ interface ConfigurationParameters {
 
 export interface ApiClientConfiguration {
   baseUrl?: string;
-  bearerToken?(): Promise<string>;
+  bearerToken?(): Promise<string|undefined>;
   onErrorResponse?(errorJson: {}): void;
   throwError?(msg: string, error?: unknown): never;
   onNetworking?(active: boolean): void;
