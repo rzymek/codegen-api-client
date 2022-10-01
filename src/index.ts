@@ -32,7 +32,19 @@ interface ConfigurationParameters {
   basePath?: string;
   fetchApi?: FetchAPI;
   headers?: Record<string, string>;
+  middleware?: Middleware[]; 
 }
+interface Middleware {
+  onError?(context: ErrorContext): Promise<Response | void>;
+}
+interface ErrorContext {
+  fetch: FetchAPI;
+  url: string;
+  init: RequestInit;
+  error: unknown;
+  response?: Response;
+}
+
 
 export interface ApiClientConfiguration {
   baseUrl?: string;
@@ -57,6 +69,13 @@ export function configureApiClient<APIS extends ImportedApis<InstanceType<Config
     headers: {
       'Content-Type': 'application/json',
     },
+    middleware: [      {
+      async onError(context){
+        if(context?.error) {
+          throw context?.error;
+        }
+      }
+    }],
     fetchApi: async (input: RequestInfo, init?: RequestInit) => {
       onNetworking(true);
       try {
@@ -81,7 +100,9 @@ export function configureApiClient<APIS extends ImportedApis<InstanceType<Config
   })
 
   return Object.keys(apis)
-    .map((name) => ({ [name]: new apis[name](configuration) }))
+    .map((name) => ({ 
+      [name]: new apis[name](configuration)
+     }))
     .reduce((agg, cur) => ({ ...agg, ...cur }), {}) as { [key in keyof APIS]: InstanceType<APIS[key]> };
 }
 
